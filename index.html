@@ -1179,7 +1179,7 @@
         // Función para enviar pedidos por WhatsApp
         function ordenarWhatsApp(producto, precio, cantidad) {
             const telefono = '51933993863'; 
-            const mensaje = `Hola, me gustaría ordenar:\n\n📦 Producto: ${producto}\n💰 Precio unitario: S/ ${precio}\n📊 Cantidad: ${cantidad}\n💵 Total: S/ ${typeof precio === 'number' ? (precio * cantidad).toFixed(2) : precio}\n\n¿Cuándo puedo recoger mi pedido?`;
+            const mensaje = `Hola, me gustaría ordenar:\n\n📦 Producto: ${producto}\n💰 Precio unitario: S/ ${precio}\n📊 Cantidad: ${cantidad}\n💵 Total: S/ ${typeof precio === 'number' ? (precio * cantidad).toFixed(2) : precio}\n\nmuchas gracias`;
             const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
         }
