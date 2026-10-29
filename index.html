@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUMAQ GALLETA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        /* HEADER Y NAVEGACIÓN */
+        header {
+            background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            border-bottom: 2px solid white;
+        }
+
+        /* SECCIÓN INICIO */
+        .inicio {
+            background: linear-gradient(rgba(255,107,53,0.8), rgba(255,107,53,0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><circle cx="200" cy="150" r="80" fill="%23FFA500" opacity="0.3"/><circle cx="1000" cy="500" r="100" fill="%23FF8C42" opacity="0.2"/></svg>');
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inicio-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .inicio h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .eslogan {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-style: italic;
+            opacity: 0.95;
+        }
+
+        .inicio-imagen {
+            margin: 20px 0;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inicio-imagen img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            margin: 10px;
+            background-color: #2ecc71;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .btn:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.6);
+        }
+
+        .btn-secondary {
+            background-color: #3498db;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background-color: #2980b9;
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6);
+        }
+
+        /* SECCIONES GENERALES */
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: #FF6B35;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #2ecc71;
+        }
+
+        /* SOBRE NOSOTROS */
+        .sobre-nosotros {
+            background-color: #f8f9fa;
+        }
+
+        .sobre-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .sobre-content h3 {
+            color: #FF8C42;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .sobre-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .sobre-imagen {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .sobre-imagen img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin: 10px;
+        }
+
+        /* PRODUCTOS Y PEDIDOS */
+        .productos {
+            background-color: rgb(207, 185, 185);
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .producto-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid #FF8C42;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .producto-imagen {
+            background: linear-gradient(135deg, #FFB26B 0%, #FF8C42 100%);
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .producto-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .producto-info {
+            padding: 25px;
+        }
+
+        .producto-info h3 {
+            color: #FF6B35;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .producto-precio {
+            font-size: 2rem;
+            color: #2ecc71;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .ingredientes, .beneficios, .presentacion {
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-left: 4px solid #2ecc71;
+            border-radius: 4px;
+        }
+
+        .ingredientes strong, .beneficios strong, .presentacion strong {
+            color: #FF8C42;
+        }
+
+        .cantidad-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .cantidad-selector label {
+            font-weight: bold;
+        }
+
+        .cantidad-selector input {
+            width: 60px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* BENEFICIOS DE LA ZANAHORIA */
+        .beneficios {
+            background: linear-gradient(135deg, #FFF5E1 0%, #FFE8CC 100%);
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            box-sizing: border-box;
+            border-radius: 10px;
+        
+        }
+
+        .beneficios-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .beneficio-item {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .beneficio-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .beneficio-icono {
+            margin-bottom: 15px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;                                                                
+        }
+
+        .beneficio-icono img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .beneficio-item h3 {
+            color: #FF8C42;
+            margin-bottom: 10px;
+        }
+    
+        /* GALERÍA */
+        .galeria {
+            background-color: rgb(150, 103, 103);
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .galeria-item {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .galeria-item:hover {
+            transform: scale(1.05);
+        }
+
+
+        .stars {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        /* CONSEJOS SALUDABLES */
+        .consejos {
+            background-color: rgb(214, 219, 179);
+        }
+
+        .consejos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));    
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .consejo-card {
+            background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #2ecc71;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .consejo-card h3 {
+            color: #27ae60;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .consejo-icono {
+            width: 30px;
+            height: 30px;
+        }
+
+        .consejo-icono img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* CONTACTO */
+        .contacto {
+            background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+            color: white;
+        }
+
+        .contacto h2, .contacto h2::after {
+            color: white;
+            background-color: transparent;
+        }
+
+        .contacto h2::after {
+            background-color: rgba(255,255,255,0.5);
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contacto-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .contacto-item:hover {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .contacto-icono {
+            margin-bottom: 15px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contacto-icono img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .contacto-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .contacto-item a:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 3px solid #FF8C42;
+        }
+
+        .footer-menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-menu a {
+            color: #FF8C42;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .footer-menu a:hover {
+            color: #FFB26B;
+        }
+
+        .footer-menu span {
+            color: #666;
+        }
+
+        /* ANIMACIONES */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* ANIMACIONES PROFESIONALES SUMAQ GALLETA */
+        .inicio {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .inicio-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .inicio h1 {
+            animation: tituloEntrada 1s cubic-bezier(.2,.75,.25,1) both;
+        }
+
+        .eslogan {
+            animation: aparecerSuave .9s ease .2s both;
+        }
+
+        .inicio-imagen img {
+            transform-origin: center;
+            animation: imagenEntrada 1.1s cubic-bezier(.2,.75,.25,1) .15s both;
+            filter: drop-shadow(0 12px 18px rgba(92, 43, 13, .18));
+        }
+
+        .inicio-content > p:not(.eslogan) {
+            animation: aparecerSuave .9s ease .35s both;
+        }
+
+        .particulas {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particula {
+            position: absolute;
+            display: block;
+            color: rgba(255,255,255,.8);
+            font-size: clamp(1.1rem, 2.5vw, 2rem);
+            opacity: .55;
+            animation: flotarParticula 7s ease-in-out infinite;
+            filter: drop-shadow(0 3px 5px rgba(120, 58, 16, .12));
+        }
+
+        .particula-1 { left: 8%; top: 18%; font-size: 2rem; animation-delay: -1s; }
+        .particula-2 { left: 20%; top: 68%; animation-delay: -3s; }
+        .particula-3 { right: 8%; top: 25%; font-size: 2.3rem; animation-delay: -4s; }
+        .particula-4 { right: 19%; top: 72%; animation-delay: -2s; }
+        .particula-5 { left: 48%; top: 12%; font-size: 2.5rem; animation-delay: -5s; }
+        .particula-6 { right: 35%; top: 82%; animation-delay: -1.5s; }
+
+        .btn {
+            position: relative;
+            overflow: hidden;
+            transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease;
+        }
+
+        .btn::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -70%;
+            width: 35%;
+            height: 200%;
+            background: rgba(255,255,255,.22);
+            transform: rotate(25deg);
+            transition: left .55s ease;
+            pointer-events: none;
+        }
+
+        .btn:hover::after { left: 130%; }
+        .btn:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+        .btn:active { transform: translateY(0) scale(.98); }
+
+        .producto-card {
+            will-change: transform;
+        }
+
+        .producto-imagen img {
+            transition: transform .6s cubic-bezier(.2,.75,.25,1), filter .4s ease;
+        }
+
+        .producto-card:hover .producto-imagen img {
+            transform: scale(1.055);
+            filter: saturate(1.06);
+        }
+
+        .producto-precio {
+            transition: transform .25s ease, color .25s ease;
+        }
+
+        .producto-card:hover .producto-precio {
+            transform: translateY(-2px);
+            color: #219653;
+        }
+
+        /* Las secciones y tarjetas se revelan al entrar en pantalla. */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s ease, transform .7s cubic-bezier(.2,.75,.25,1);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-stagger > * {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .55s ease, transform .55s cubic-bezier(.2,.75,.25,1);
+        }
+
+        .reveal-stagger.is-visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: .08s; }
+        .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: .16s; }
+        .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: .24s; }
+        .reveal-stagger.is-visible > *:nth-child(5) { transition-delay: .32s; }
+        .reveal-stagger.is-visible > *:nth-child(6) { transition-delay: .40s; }
+
+        .scroll-to-top {
+            transition: opacity .3s ease, visibility .3s ease, transform .3s ease, background-color .3s ease;
+        }
+
+        .scroll-to-top.visible {
+            animation: botonEntrada .4s ease both;
+        }
+
+        @keyframes tituloEntrada {
+            from { opacity: 0; transform: translateY(24px); letter-spacing: 2px; }
+            to { opacity: 1; transform: translateY(0); letter-spacing: normal; }
+        }
+
+        @keyframes imagenEntrada {
+            from { opacity: 0; transform: translateY(18px) scale(.92); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes aparecerSuave {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes flotarParticula {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(-5deg); }
+            50% { transform: translate3d(7px, -18px, 0) rotate(7deg); }
+        }
+
+        @keyframes botonEntrada {
+            from { transform: translateY(12px) scale(.92); }
+            to { transform: translateY(0) scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .particula-1 { left: 3%; top: 12%; }
+            .particula-3 { right: 3%; top: 18%; }
+            .particula-5 { left: 47%; top: 7%; }
+            .particula-2 { left: 8%; top: 78%; }
+            .particula-4 { right: 7%; top: 78%; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+            .reveal, .reveal-stagger > * {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .inicio h1 {
+                font-size: 2rem;
+            }
+
+            .eslogan {
+                font-size: 1.1rem;
+            }
+
+            .inicio-imagen {
+                height: 150px;
+            }
+
+            .sobre-content {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .productos-grid, .beneficios-list, .galeria-grid, .testimonios-grid, .consejos-grid, .contacto-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #FF8C42;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: #FF6B35;
+            transform: translateY(-3px);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <!-- REEMPLAZA LA RUTA CON TU LOGO -->
+                <img src="logo.png" alt="Logo SUMAC" class="logo-img">
+                <span>SUMAQ GALLETA</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#consejos">Consejos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- SECCIÓN INICIO -->
+    <section id="inicio" class="inicio">
+        <div class="particulas" aria-hidden="true">
+            <span class="particula particula-1">🥕</span>
+            <span class="particula particula-2">✦</span>
+            <span class="particula particula-3">🥕</span>
+            <span class="particula particula-4">✧</span>
+            <span class="particula particula-5">·</span>
+            <span class="particula particula-6">✦</span>
+        </div>
+        <div class="inicio-content">
+            <h1>Galletas de Zanahoria</h1>
+            <p class="eslogan">Hechas con amor, sabor y zanahorias frescas de nuestra tierra</p>
+            <div class="inicio-imagen">
+                <img src="galletas de zanahoria.jpg" alt="Galletas de Zanahoria">
+            </div>
+            <p style="font-size: 1.1rem; margin-bottom: 30px;">
+                Nuestras galletas son elaboradas con ingredientes naturales y seleccionados especialmente para tu bienestar. Perfectas para complementar una alimentación equilibrada.
+            </p>
+            <button class="btn" onclick="document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">📦 Realiza tu Pedido</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">📞 Contáctanos</button>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section id="nosotros" class="sobre-nosotros reveal">
+        <h2>Sobre Nosotros</h2>
+        <div class="sobre-content">
+            <div>
+                <h3>Nuestra Historia</h3>
+                <p>
+                    Nació de la pasión por crear alimentos saludables que disfruten toda la familia en especial los estudiantes. Comenzamos como un pequeño proyecto y hoy somos referentes con nuestras galletas
+                </p>
+                
+                <h3>Misión</h3>
+                <p>
+                    Somos una empresa dedicada a la elaboración y comercialización de galletas de zanahoria nutritivas y saludables, orientadas a promover una alimentación balanceada en estudiantes de las instituciones educativas de Otuzco, ofreciendo un producto de calidad, accesible y elaborado con ingredientes naturales
+                </p>
+                
+                <h3>Visión</h3>
+                <p>
+                    Al año 2031 ser una empresa líder en la producción de galletas saludables en Otuzco y la región La Libertad, reconocida por contribuir al bienestar y la alimentación saludable de los estudiantes mediante productos innovadores, nutritivos y de alta calidad.
+                </p>
+            </div>
+            <div>
+                <!-- REEMPLAZA LAS RUTAS CON TUS IMÁGENES -->
+                <div class="sobre-imagen">
+                    <img src="salud.jpeg" alt="Salud">
+                    <img src="calidad.jpeg" alt="Calidad">
+                    <img src="compromiso.jpeg" alt="Compromiso">
+                </div>
+                <h3>Compromiso con la Alimentación Saludable</h3>
+                <p>
+                    ✅ Ingredientes 100% naturales y sin conservantes artificiales
+                </p>
+                <p>
+                    ✅ Enriquecidas con vitaminas y minerales
+                </p>
+                <p>
+                    ✅ Aptas para diferentes edades y dietas
+                </p>
+                <p>
+                    ✅ Producción higiénica y con estándares de calidad
+                </p>
+                <p>
+                    ✅ Empaque ecológico y sostenible
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS Y PEDIDOS -->
+    <section id="productos" class="productos reveal">
+        <h2>Productos y Pedidos</h2>
+        <div class="productos-grid reveal-stagger">
+            <!-- PRODUCTO 1 -->
+            <div class="producto-card">
+                <!-- REEMPLAZA LA RUTA CON TU IMAGEN DE PRODUCTO -->
+                <div class="producto-imagen">
+                    <img src="galletas individuales.jpg" alt="Galletas de Zanahoria">
+                </div>
+                <div class="producto-info">
+                    <h3>Galletas de Zanahoria</h3>
+                    <div class="ingredientes">
+                        <strong>Ingredientes:</strong><br>
+                        Zanahoria, harina de avena, chocolate, mantequilla, panela
+                    </div>
+                    <div class="presentacion">
+                        <strong>Presentación:</strong> unidad
+                    </div>
+                    <div class="producto-precio">S/ 0.45</div>
+                    <div class="cantidad-selector">
+                        <label for="cantidad1">Cantidad:</label>
+                        <input type="number" id="cantidad1" min="1" value="1">
+                    </div>
+                    <button class="btn" onclick="ordenarWhatsApp('Galletas Clásicas de Zanahoria', 0.45, document.getElementById('cantidad1').value)">🛒 Pedir por WhatsApp</button>
+                </div>
+            </div>
+
+            <!-- PRODUCTO 2 -->
+            <div class="producto-card">
+                <!-- REEMPLAZA LA RUTA CON TU IMAGEN DE PRODUCTO -->
+                <div class="producto-imagen">
+                    <img src="imagen galleta de zanahoria.jpg" alt="paquete galleta">
+                </div>
+                <div class="producto-info">
+                    <h3>paquete galleta</h3>
+                    <div class="ingredientes">
+                        <strong>Ingredientes:</strong><br>
+                        Zanahoria, chocolate, avena, mantequilla y panela
+                    </div>
+                    <div class="presentacion">
+                        <strong>Presentación:</strong> Paquete de 4 unidades
+                    </div>
+                    <div class="producto-precio">S/ 2.00</div>
+                    <div class="cantidad-selector">
+                        <label for="cantidad2">Cantidad:</label>
+                        <input type="number" id="cantidad2" min="1" value="1">
+                    </div>
+                    <button class="btn" onclick="ordenarWhatsApp('Zanahoria con Chocolate', 2.0, document.getElementById('cantidad2').value)">🛒 Pedir por WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS DE LA ZANAHORIA -->
+    <section id="beneficios" class="beneficios reveal">
+        <h2>🌱 Beneficios de la Zanahoria</h2>
+        <div class="beneficios-list reveal-stagger">
+            <div class="beneficio-item">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <div class="beneficio-icono">
+                    <img src="https://lux.mx/cdn/shop/articles/Que_es_la_vista.webp?v=1724867042&width=1100" alt="Cuidado de la Vista">
+                </div>
+                <h3>Cuidado de la Vista</h3>
+                <p>Rica en vitamina A y carotenoides que protegen y fortalecen la salud ocular. Perfecta para estudiantes y trabajadores.</p>
+            </div>
+            <div class="beneficio-item">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <div class="beneficio-icono">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMLWajhuNqTasLdcg-3SWdEPhSfF5rwu_Z-4HrFgBQ9SHnwIaEZU4pw6Pg&s=10" alt="Rica en Vitamina A">
+                </div>
+                <h3>Rica en Vitamina A</h3>
+                <p>Esencial para el crecimiento, desarrollo y fortalecimiento del sistema inmunológico en todas las edades.</p>
+            </div>
+            <div class="beneficio-item">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <div class="beneficio-icono">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ4LJKNtjYMWbq4-3n6tgAd5GJPKKadYjd85as01g4lMvnEaaO9rrI0boy&s=10" alt="Antioxidantes Naturales">
+                </div>
+                <h3>Antioxidantes Naturales</h3>
+                <p>Combate el envejecimiento celular y protege nuestro cuerpo contra radicales libres.</p>
+            </div>
+            <div class="beneficio-item">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <div class="beneficio-icono">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSczkZ9u7CZeC2vYrciQvP3x6OVPQ3BW1j67wyjwTkwyT9D3inhdbcl25gm&s=10" alt="Mejora la Digestión">
+                </div>
+                <h3>Mejora la Digestión</h3>
+                <p>Alto contenido de fibra que favorece un sistema digestivo saludable y regular.</p>
+            </div>
+            <div class="beneficio-item">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <div class="beneficio-icono">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgaDJZu6uWU8TKpFpUexH6VsmG1OAQajiRnVrWNV0SlpfTRqUJNDGZvx6X&s=10" alt="Alimentación Equilibrada">
+                </div>
+                <h3>Alimentación Equilibrada</h3>
+                <p>Complemento nutritivo para una dieta balanceada, perfecto para toda la familia.</p>
+            </div>
+            <div class="beneficio-item">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <div class="beneficio-icono">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnwm8Fk9Fi3BL7DCLtJTu_N2JNOQPekum5oK0IWkcC8pRl6ENm6Yq0zgU&s=10" alt="Salud Cardiovascular">
+                </div>
+                <h3>Salud Cardiovascular</h3>
+                <p>Contribuye a mantener niveles saludables de colesterol y presión arterial.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria" class="galeria reveal">
+        <h2>Galería</h2>
+        <div class="galeria-grid reveal-stagger">
+            <!-- REEMPLAZA LAS RUTAS CON TUS IMÁGENES -->
+            <div class="galeria-item" title="Galletas de Zanahoria Clásicas">
+                <img src="galletas de zanahoria.jpg" alt="Galletas Zanahoria">
+            </div>
+            <div class="galeria-item" title="Ingredientes Naturales">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx5fMPRQdjxceW8sgj0InUDy8Q5wc_bnwTKovD9Vefg584mldTfR6Hq40&s=10" alt="Ingredientes">
+            </div>
+            <div class="galeria-item" title="Proceso de Elaboración">
+                <img src="elaboracion.jpg" alt="Proceso de Elaboración">
+            </div>
+            <div class="galeria-item" title="Clientes Satisfechos">
+                <img src="clientes.jpg" alt="Clientes Satisfechos">
+            </div>
+            <div class="galeria-item" title="Horneando">
+                <img src="horneado.jpg" alt="Horneando">
+            </div>
+            <div class="galeria-item" title="Producto Final">
+                <img src="imagen galleta de zanahoria.jpg" alt="Producto Final">
+            </div>
+        </div>
+    </section>
+
+    <!-- CONSEJOS SALUDABLES -->
+    <section id="consejos" class="consejos reveal">
+        <h2>Consejos Saludables</h2>
+        <div class="consejos-grid reveal-stagger">
+            <div class="consejo-card">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <h3>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTAUMwYJTl9LVJoRXv_ZbJlMgpgxLvzJQOPJ6hh2H1nb7wJ1E-85RDOztZ&s=10" alt="Alimentación" class="consejo-icono">
+                    Alimentación Balanceada
+                </h3>
+                <p>Una alimentación balanceada incluye verduras, frutas, proteínas y carbohidratos complejos. Nuestras galletas de zanahoria son un excelente complemento para tu dieta diaria.</p>
+            </div>
+            <div class="consejo-card">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <h3>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTboTDXlP-UDetUN0F7C_AgJxcNUJxXYI59g_LBonCUBaKdnXyfGKwMm4_1&s=10" alt="Frutas" class="consejo-icono">
+                    Beneficios de Frutas y Verduras
+                </h3>
+                <p>Consumir frutas y verduras diariamente proporciona vitaminas, minerales y fibra esencial para la salud. La zanahoria es especialmente beneficiosa por su contenido en vitamina A.</p>
+            </div>
+            <div class="consejo-card">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <h3>
+                    <img src="salud.jpeg" alt="Datos" class="consejo-icono">
+                    Datos sobre la Zanahoria
+                </h3>
+                <p>La zanahoria contiene beta-caroteno que el cuerpo convierte en vitamina A. Una sola zanahoria puede proporcionar más del 100% de la ingesta diaria recomendada.</p>
+            </div>
+            <div class="consejo-card">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <h3>
+                    <img src="clientes.jpg" alt="Familia" class="consejo-icono">
+                    Salud Familiar
+                </h3>
+                <p>Establece hábitos saludables desde la infancia. Las galletas nutritivas son una excelente opción para meriendas escolares y desayunos en familia.</p>
+            </div>
+            <div class="consejo-card">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <h3>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_58D4Mb2n8BSFc3vR7bCa9tbB9TiAwKe_spyZQC3xkYBtE5Tk6qZT0GrB&s=10" alt="Agua" class="consejo-icono">
+                    Hidratación y Nutrición
+                </h3>
+                <p>Combina nuestras galletas con agua, leche o jugos naturales para una nutrición completa. Mantén una adecuada hidratación durante el día.</p>
+            </div>
+            <div class="consejo-card">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <h3>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGAVqVVuelENUrgzdLWqqJlLudJRMiQwPb3kxu9x27W9PEMpFxpJqi_Dc&s=10" alt="Metas" class="consejo-icono">
+                    Metas de Bienestar
+                </h3>
+                <p>Pequeños cambios en tu alimentación generan grandes resultados. Incluye productos saludables como nuestras galletas en tu rutina diaria.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contacto reveal">
+        <h2>Contacto</h2>
+        <div class="contacto-grid reveal-stagger">
+          <div class="contacto-item">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <div class="contacto-icono">
+                    <img src="https://img.icons8.com/?size=96&id=QkXeKixybttw&format=gif&color=f7f7f7" alt="WhatsApp">
+                </div>
+                <h3>WhatsApp</h3>
+                <p>Contactanos por WhatsApp</p>
+                <a href="https://wa.me/51933993863?text=Hola%20me%20interesa%20las%20galletas%20de%20zanahoria" target="_blank">+51 933 993 863</a>
+                </div>
+          <div class="contacto-item">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <div class="contacto-icono">
+                    <img src="https://cdn2.chicmagazine.com.mx/uploads/media/2023/10/16/ubicacion-real-persona-google-maps_34_2_1077_635.jpg" alt="Ubicación">
+                </div>
+                <h3>Ubicación</h3>
+                <p>Visitanos en nuestro local</p>
+                <a href="https://maps.app.goo.gl/KwnfAYE4HHek18C88?g_st=aw" target="_blank">otuzco, Perú</a>
+                </div>
+          <div class="contacto-item">
+                 <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <div class="contacto-icono">
+                    <img src="https://img.icons8.com/?size=96&id=CtrV2SV33rD9&format=gif&color=f7f7f7" alt="Email">
+                </div>
+                <h3>facebook</h3>
+                <p>visita nuestra cuenta</p>
+                <a href="mailto:contacto@sumacgalleta.com">contacto@sumacgalleta.com</a>
+                </div>
+          <div class="contacto-item">
+                <!-- REEMPLAZA LA RUTA CON TU ÍCONO -->
+                <div class="contacto-icono">
+                    <img src="https://img.icons8.com/?size=100&id=11xHwSW974uy&format=gif&color=f7f7f7" alt="tik tok">
+                </div>
+                <h3>tik tok</h3>
+                <p>Síguenos tik tok</p>
+                <a href="https://www.instagram.com" target="_blank">@sumacgalleta</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-menu">
+            <a href="#inicio">Inicio</a>
+            <span>|</span>
+            <a href="#nosotros">Nosotros</a>
+            <span>|</span>
+            <a href="#productos">Productos y Pedidos</a>
+            <span>|</span>
+            <a href="#beneficios">Beneficios</a>
+            <span>|</span>
+            <a href="#galeria">Galería</a>
+            <span>|</span>
+            <a href="#consejos">Consejos Saludables</a>
+            <span>|</span>
+            <a href="#contacto">Contacto</a>
+        </div>
+        <p>&copy; 2026 SUMAC GALLETA. Todos los derechos reservados. 🥕</p>
+        <p>Hecho por usquil tc</p>
+    </footer>
+
+    <!-- BOTÓN SCROLL TO TOP -->
+    <div class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</div>
+
+    <script>
+        // Mostrar/ocultar botón scroll to top
+        window.addEventListener('scroll', function() {
+            const scrollToTop = document.getElementById('scrollToTop');
+            if (window.pageYOffset > 300) {
+                scrollToTop.classList.add('visible');
+            } else {
+                scrollToTop.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Función para enviar pedidos por WhatsApp
+        function ordenarWhatsApp(producto, precio, cantidad) {
+            const telefono = '51933993863'; 
+            const mensaje = `Hola, me gustaría ordenar:\n\n📦 Producto: ${producto}\n💰 Precio unitario: S/ ${precio}\n📊 Cantidad: ${cantidad}\n💵 Total: S/ ${typeof precio === 'number' ? (precio * cantidad).toFixed(2) : precio}\n\n¿Cuándo puedo recoger mi pedido?`;
+            const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        // Animación suave para enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+
+
+        // Revelar secciones y tarjetas suavemente al entrar en pantalla.
+        (function() {
+            const elementos = document.querySelectorAll('.reveal, .reveal-stagger');
+            if (!('IntersectionObserver' in window)) {
+                elementos.forEach(elemento => elemento.classList.add('is-visible'));
+                return;
+            }
+
+            const observador = new IntersectionObserver((entradas, observer) => {
+                entradas.forEach(entrada => {
+                    if (entrada.isIntersecting) {
+                        entrada.target.classList.add('is-visible');
+                        observer.unobserve(entrada.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+
+            elementos.forEach(elemento => observador.observe(elemento));
+        })();
+
+        // Validar cantidad mínima
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('change', function() {
+                if (this.value < 1) {
+                    this.value = 1;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
